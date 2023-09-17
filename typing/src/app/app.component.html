@@ -1,0 +1,24 @@
+<div class="columns is-centered p-6">
+  <div class="card column is-one-third">
+    <div class="card-content is-flex is-flex-direction-column">
+      <div>
+        <h1 class="title has-text-centered">Typing Challange</h1>
+        <p class="has-text-centered">
+          <span
+            *ngFor="let letter of randomText.split(''); let i = index"
+            [class]="compare(letter, enteredText[i])"
+            >{{ letter }}</span
+          >
+        </p>
+      </div>
+
+      <div class="field">
+        <input class="input" (input)="onInput($any($event.target).value)" />
+      </div>
+
+      <div class="box has-text-centered" *ngIf="enteredText === randomText">
+        <h3 class="title">Success!</h3>
+      </div>
+    </div>
+  </div>
+</div>
