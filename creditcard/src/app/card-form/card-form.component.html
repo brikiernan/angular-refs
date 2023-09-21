@@ -1,0 +1,53 @@
+<div class="columns">
+  <div class="column">
+    <app-card
+      [cardNumber]="cardForm.value.cardNumber"
+      [expiration]="cardForm.value.expiration"
+      [name]="cardForm.value.name"
+    />
+  </div>
+  <div class="column">
+    <form (ngSubmit)="onSubmit()" [formGroup]="cardForm">
+      <app-input label="Name" [control]="cardForm.controls.name" />
+      <app-input
+        mask="0000-0000-0000-0000"
+        [dropSpecialCharacters]="true"
+        label="Card Number"
+        [control]="cardForm.controls.cardNumber"
+      />
+      <div class="columns">
+        <div class="column">
+          <app-input
+            mask="M0/00"
+            label="Expiration"
+            [control]="cardForm.controls.expiration"
+          />
+        </div>
+        <div class="column">
+          <app-input
+            mask="000"
+            label="Security Code"
+            [control]="cardForm.controls.security"
+          />
+        </div>
+      </div>
+      <div class="buttons">
+        <button
+          [disabled]="cardForm.invalid"
+          class="button is-primary"
+          type="submit"
+        >
+          Submit
+        </button>
+        <button class="button is-warning" type="button" (click)="onReset()">
+          Reset
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- <hr />
+<div>Form Contents: {{ cardForm.value | json }}</div>
+<div>Form is valid: {{ cardForm.valid }}</div>
+<div>Errors: {{ cardForm.controls.name.errors | json }}</div> -->
