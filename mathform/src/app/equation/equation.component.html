@@ -1,0 +1,13 @@
+<form [formGroup]="form">
+  <div class="equation">{{ val1 }} + {{ val2 }} =</div>
+  <input appAnswerHighlight formControlName="answer" />
+</form>
+
+<div class="stats">
+  {{ average | number : '1.1-3' }} seconds per correct answer
+</div>
+
+<!-- <hr />
+<div>Form is valid: {{ form.valid }}</div>
+<div>Form Contents: {{ form.value | json }}</div>
+<div>Errors: {{ form.errors | json }}</div> -->
