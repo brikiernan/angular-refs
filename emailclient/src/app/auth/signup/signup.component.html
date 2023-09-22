@@ -1,0 +1,35 @@
+<h3>Create an Account</h3>
+<form class="ui form" [formGroup]="form">
+  <app-input
+    label="Username"
+    [control]="form.controls.username"
+    errMsg="Username can only use letters and numbers."
+  />
+  <app-input
+    label="Password"
+    [control]="form.controls.password"
+    type="password"
+  />
+  <app-input
+    label="Confirm Password"
+    [control]="form.controls.passwordConfirmation"
+    type="password"
+  />
+
+  <div
+    *ngIf="
+      form.errors &&
+      form.controls.password.touched &&
+      form.controls.passwordConfirmation.touched
+    "
+    class="ui red basic label"
+  >
+    <p *ngIf="form.errors['passwordsDontMatch']">Passwords do not match.</p>
+  </div>
+
+  <div>
+    <button [disabled]="form.invalid" class="ui submit button primary">
+      Sign Up
+    </button>
+  </div>
+</form>

@@ -1,0 +1,28 @@
+<div class="field">
+  <label>{{ label }}</label>
+  <input [type]="type" [formControl]="control" />
+  <div
+    *ngIf="control.errors && control.touched && control.dirty"
+    class="ui pointing red basic label"
+  >
+    <p *ngIf="control.errors['required']">{{ label }} is required.</p>
+    <p *ngIf="control.errors['minlength']">
+      {{ label }} min length is
+      {{ control.errors['minlength']['requiredLength'] }}.
+    </p>
+    <p *ngIf="control.errors['maxlength']">
+      {{ label }} max length is
+      {{ control.errors['maxlength']['requiredLength'] }}.
+    </p>
+    <p *ngIf="control.errors['pattern']">
+      <ng-container *ngIf="errMsg">{{ errMsg }}</ng-container>
+      <ng-container *ngIf="!errMsg"
+        >{{ label }} format is invalid.</ng-container
+      >
+    </p>
+    <p *ngIf="control.errors['nonUniqueUsername']">
+      {{ label }} {{ control.value }} has already been used.
+    </p>
+    <p *ngIf="control.errors['unknown']">An unknown error has occurred.</p>
+  </div>
+</div>
