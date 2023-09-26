@@ -8,8 +8,10 @@ import {
 } from '@angular/forms';
 
 import { InputComponent } from 'shared/input/input.component';
-import { MatchPassword } from '../match-password';
-import { UniqueUsername } from '../unique-username';
+import { MatchPassword } from 'auth/match-password';
+import { UniqueUsername } from 'auth/unique-username';
+import { AuthService } from 'auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -49,6 +51,23 @@ export class SignupComponent {
 
   constructor(
     private matchPassword: MatchPassword,
-    private uniqueUsername: UniqueUsername
+    private uniqueUsername: UniqueUsername,
+    private auth: AuthService,
+    private router: Router
   ) {}
+
+  onSubmit() {
+    if (this.form.invalid) {
+      return;
+    }
+
+    this.auth.signup(this.form.value).subscribe({
+      next: () => {
+        this.router.navigateByUrl('/inbox');
+      },
+      error: () => {
+        this.form.setErrors({ unknown: true });
+      },
+    });
+  }
 }

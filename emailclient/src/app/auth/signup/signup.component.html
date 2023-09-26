@@ -1,5 +1,5 @@
 <h3>Create an Account</h3>
-<form class="ui form" [formGroup]="form">
+<form (ngSubmit)="onSubmit()" class="ui form" [formGroup]="form">
   <app-input
     label="Username"
     [control]="form.controls.username"
@@ -25,6 +25,7 @@
     class="ui red basic label"
   >
     <p *ngIf="form.errors['passwordsDontMatch']">Passwords do not match.</p>
+    <p *ngIf="form.errors['unknown']">An unknown error has occurred.</p>
   </div>
 
   <div>

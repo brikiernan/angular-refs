@@ -1,1 +1,24 @@
-<p>signin works!</p>
+<h3>Sign In</h3>
+<form (ngSubmit)="onSubmit()" class="ui form" [formGroup]="form">
+  <app-input
+    label="Username"
+    [control]="form.controls.username"
+    errMsg="Username can only use letters and numbers."
+  />
+  <app-input
+    label="Password"
+    [control]="form.controls.password"
+    type="password"
+  />
+
+  <div *ngIf="form.errors" class="ui red basic label">
+    <p *ngIf="form.errors['credentials']">Invalid username or password.</p>
+    <p *ngIf="form.errors['unknown']">An unknown error has occurred.</p>
+  </div>
+
+  <div>
+    <button [disabled]="form.invalid" class="ui submit button primary">
+      Sign In
+    </button>
+  </div>
+</form>
