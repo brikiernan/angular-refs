@@ -53,7 +53,7 @@ import { AuthService } from 'auth/auth.service';
   styles: [],
 })
 export class AppComponent implements OnInit {
-  authenticated$: BehaviorSubject<boolean>;
+  authenticated$: BehaviorSubject<boolean | null>;
 
   constructor(private auth: AuthService) {
     this.authenticated$ = this.auth.authenticated$;

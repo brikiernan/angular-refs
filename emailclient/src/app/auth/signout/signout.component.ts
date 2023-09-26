@@ -15,7 +15,7 @@ export class SignoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.auth.signout().subscribe(() => {
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/', { replaceUrl: true });
     });
   }
 }
