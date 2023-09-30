@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { EmailService } from 'inbox/email.service';
 import { EmailSummary } from 'inbox/email.model';
-import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-email-index',
@@ -26,6 +26,17 @@ import { RouterModule } from '@angular/router';
         content: '>';
         font-size: 24px;
         margin-right: 12px;
+      }
+
+      .content {
+        width: 90%;
+      }
+
+      .trim {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 100%;
       }
     `,
   ],

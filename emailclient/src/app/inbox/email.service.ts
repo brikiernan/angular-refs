@@ -2,10 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import {
-  CreateEmailParams,
   CreateEmailResponse,
   EmailDetails,
   EmailSummary,
+  SendEmailParams,
 } from './email.model';
 
 @Injectable({
@@ -24,7 +24,7 @@ export class EmailService {
     return this.http.get<EmailDetails>(this.baseUrl + `/emails/${id}`);
   }
 
-  createEmail(params: Partial<CreateEmailParams>) {
+  sendEmail(params: Partial<SendEmailParams>) {
     return this.http.post<CreateEmailResponse>(
       this.baseUrl + '/emails',
       params

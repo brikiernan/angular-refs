@@ -1,0 +1,8 @@
+<button class="ui button inverted primary fluid" (click)="showModal = true">
+  Reply
+</button>
+
+<app-modal (onClose)="showModal = false" *ngIf="showModal">
+  <div modalTitle>Reply</div>
+  <app-email-form (data)="onSubmit($event)" [email]="email" />
+</app-modal>

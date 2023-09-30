@@ -17,8 +17,9 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
   ],
 })
 export class InputComponent {
-  @Input({ required: true }) control = new FormControl();
+  @Input({ required: true }) control: any;
   @Input() label = '';
   @Input() errMsg = '';
   @Input() type: HTMLInputElement['type'] = 'text';
+  @Input() textArea = false;
 }

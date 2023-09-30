@@ -1,8 +1,7 @@
-export interface CreateEmailParams {
+export interface SendEmailParams {
   subject: string;
   text: string;
   to: string;
-  from: string;
 }
 
 export interface CreateEmailResponse {

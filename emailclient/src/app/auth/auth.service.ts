@@ -1,3 +1,4 @@
+import { BehaviorSubject, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -8,7 +9,6 @@ import {
   SignupResponse,
   UsernameResponse,
 } from './auth.model';
-import { BehaviorSubject, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +16,7 @@ import { BehaviorSubject, tap } from 'rxjs';
 export class AuthService {
   baseUrl = 'https://api.angular-email.com';
   authenticated$ = new BehaviorSubject<boolean | null>(null);
+  username = '';
 
   constructor(private http: HttpClient) {}
 
@@ -28,19 +29,34 @@ export class AuthService {
   signin(data: Partial<AuthForm>) {
     return this.http
       .post<SigninResponse>(this.baseUrl + '/auth/signin', data)
-      .pipe(tap(() => this.authenticated$.next(true)));
+      .pipe(
+        tap(({ username }) => {
+          this.authenticated$.next(true);
+          this.username = username;
+        })
+      );
   }
 
   signup(data: Partial<AuthForm>) {
     return this.http
       .post<SignupResponse>(this.baseUrl + '/auth/signup', data)
-      .pipe(tap(() => this.authenticated$.next(true)));
+      .pipe(
+        tap(({ username }) => {
+          this.authenticated$.next(true);
+          this.username = username;
+        })
+      );
   }
 
   checkAuth() {
     return this.http
       .get<SignedinResponse>(this.baseUrl + '/auth/signedin')
-      .pipe(tap((val) => this.authenticated$.next(val.authenticated)));
+      .pipe(
+        tap(({ authenticated, username }) => {
+          this.authenticated$.next(authenticated);
+          this.username = username;
+        })
+      );
   }
 
   signout() {
