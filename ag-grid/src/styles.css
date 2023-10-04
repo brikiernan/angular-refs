@@ -1,0 +1,86 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@astrouxds/tokens/dist/css/index.css';
+@import '@astrouxds/tokens/dist/css/theme.light.css';
+@import 'ag-grid-community/styles/ag-grid.css';
+
+body {
+  margin: 0;
+  background-color: var(--color-background-base-default);
+}
+
+ag-grid-angular {
+  width: inherit;
+  height: inherit;
+}
+
+.ag-header {
+  font-family: var(--font-heading-5-font-family);
+  font-size: var(--font-heading-5-font-size);
+  font-weight: var(--font-heading-5-font-weight);
+  line-height: var(--font-heading-5-line-height);
+  letter-spacing: var(--font-heading-5-letter-spacing);
+  box-shadow: var(--table-header-shadow);
+  z-index: 1;
+}
+
+.ag-body {
+  font-family: var(--font-body-1-font-family);
+  font-size: var(--font-body-1-font-size);
+  font-weight: var(--font-body-1-font-weight);
+  letter-spacing: var(--font-body-1-letter-spacing);
+}
+
+/* https://www.ag-grid.com/javascript-data-grid/global-style-customisation-variables */
+.ag-theme-astro {
+  --ag-foreground-color: var(--color-text-primary);
+  --ag-background-color: var(--color-background-surface-default);
+  --ag-header-background-color: var(--color-background-surface-header);
+  --ag-selected-row-background-color: var(--color-background-surface-selected);
+  --ag-row-hover-color: var(--color-background-surface-hover);
+  --ag-range-selection-border-color: transparent;
+  --ag-border-color: var(--color-background-base-default);
+  --ag-row-border-color: var(--color-background-base-default);
+  --ag-row-height: calc(var(--line-height-xl) + var(--spacing-025));
+  --ag-header-height: var(--line-height-2xl);
+  --ag-font-family: var(--font-body-1-font-family);
+  --ag-font-size: var(--font-body-1-font-size);
+}
+
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-border-interactive-muted);
+  border-radius: 8px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  border-left-width: 4px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  border-top-width: 4px;
+}
+
+::-webkit-scrollbar-thumb:active,
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-background-interactive-default);
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+  background-color: var(--color-background-surface-default);
+}
+
+::-webkit-scrollbar-track:vertical {
+  box-shadow: inset 3px 3px 3px 0px rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-track:horizontal {
+  box-shadow: inset 1px 3px 3px 0px rgba(0, 0, 0, 0.5);
+}
