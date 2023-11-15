@@ -16,6 +16,13 @@ const routes: Routes = [
       return FactsModule;
     },
   },
+  {
+    path: 'cat-breeds',
+    loadChildren: async () => {
+      const { BreedsModule } = await import('./breeds/breeds.module');
+      return BreedsModule;
+    },
+  },
 ];
 
 @NgModule({
