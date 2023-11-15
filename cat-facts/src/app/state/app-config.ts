@@ -1,8 +1,17 @@
 import { DefaultDataServiceConfig, EntityDataModuleConfig } from '@ngrx/data';
 
+import {
+  factEntityMetadata,
+  factEntityPluralNames,
+} from '../fact/state/fact-metadata';
+
 export const entityConfig: EntityDataModuleConfig = {
-  entityMetadata: {},
-  pluralNames: {},
+  entityMetadata: {
+    ...factEntityMetadata,
+  },
+  pluralNames: {
+    ...factEntityPluralNames,
+  },
 };
 
 const defaultDataServiceConfig: DefaultDataServiceConfig = {
