@@ -4,7 +4,7 @@ import {
   EntityCollectionServiceElementsFactory,
 } from '@ngrx/data';
 
-import { Fact, FactKey } from './fact.model';
+import { Fact, FactKey } from '../fact.model';
 
 @Injectable({ providedIn: 'root' })
 export class FactService extends EntityCollectionServiceBase<Fact> {

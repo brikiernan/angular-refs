@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
 
-import { FactService } from '../fact.service';
+import { FactService } from '../services/fact.service';
 
 @Component({
   selector: 'cat-fact',

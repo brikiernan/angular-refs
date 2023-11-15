@@ -4,18 +4,25 @@ import {
   factEntityMetadata,
   factEntityPluralNames,
 } from '../fact/state/fact-metadata';
+import {
+  factsEntityMetadata,
+  factsEntityPluralNames,
+} from '../facts/state/facts-metadata';
+import { ApiPath } from './app-paths';
 
 export const entityConfig: EntityDataModuleConfig = {
   entityMetadata: {
     ...factEntityMetadata,
+    ...factsEntityMetadata,
   },
   pluralNames: {
     ...factEntityPluralNames,
+    ...factsEntityPluralNames,
   },
 };
 
 const defaultDataServiceConfig: DefaultDataServiceConfig = {
-  root: 'https://catfact.ninja',
+  root: ApiPath.root,
 };
 
 export const DefaultDataServiceProvider = {
